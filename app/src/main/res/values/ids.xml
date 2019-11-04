@@ -3,4 +3,5 @@
     <item name="numberTextView" type="id" />
     <item name="ui" type="id" />
     <item name="pview" type="id" />
+    <item name="listview" type="id" />
 </resources>

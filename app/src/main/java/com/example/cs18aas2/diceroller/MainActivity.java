@@ -8,10 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static android.R.id.input;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private int points = 0;
     private TextView pointview;
     private EditText input;
+    private TextView lview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         input = (EditText) findViewById(R.id.ui);
         pointview = (TextView) findViewById(R.id.pview);
+        lview = (TextView) findViewById(R.id.listview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -97,6 +101,48 @@ public class MainActivity extends AppCompatActivity {
             points = points + 1;
 
             pointview.setText(Integer.toString(points));
+
+        }
+
+    }
+
+    public void on_butoon_click2(View view){
+
+
+
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("1) If you could go anywhere in the world, where would you go?");
+
+        list.add("2) If you were stranded on a desert island, what three things would you want to take with you?");
+
+        list.add("3) If you could eat only one food for the rest of your life, what would that be?");
+
+        list.add("4) If you won a million dollars, what is the first thing you would buy?");
+
+        list.add("5) If you could spaned the day with one fictional character, who would it be?");
+
+        list.add("6) If you found a magic lantern and a genie gave you three wishes, what would you wish?");
+
+
+
+        Random rand = new Random();
+
+
+
+        int elements = 1;
+
+
+
+        for (int i = 0; i < elements; i++) {
+
+
+
+            int ri = rand.nextInt(list.size());
+
+            String randelement = list.get(ri);
+
+            lview.setText(randelement);
 
         }
 
