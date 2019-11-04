@@ -8,16 +8,29 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
+import static android.R.id.input;
+import static com.example.cs18aas2.diceroller.R.id.numberTextView;
+
 public class MainActivity extends AppCompatActivity {
+
+    private int points = 0;
+    private TextView pointview;
+    private EditText input;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        input = (EditText) findViewById(R.id.ui);
+        pointview = (TextView) findViewById(R.id.pview);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,17 +68,39 @@ public class MainActivity extends AppCompatActivity {
 
     public void on_button_click(View view){
 
-        TextView tv = (TextView) this.findViewById(R.id.numberTextView);
+        TextView tv = (TextView) this.findViewById(numberTextView);
 
 
 
         Random r = new Random();
 
-        int number = r.nextInt(10);
+        int number = r.nextInt(6) + 1;
 
 
 
         tv.setText(Integer.toString(number));
 
+
+
+        int n = Integer.parseInt(input.getText().toString());
+
+
+
+        if (n < 1 || n > 6) {
+
+            Toast.makeText(this, "numbers must be between 1 and 6", Toast.LENGTH_SHORT).show();
+
+        } else if (n == number) {
+
+            Toast.makeText(this, "Congratulations !", Toast.LENGTH_SHORT).show();
+
+            points = points + 1;
+
+            pointview.setText(Integer.toString(points));
+
+        }
+
     }
+
+
 }
